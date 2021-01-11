@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title style="font-size: 18px;">ResBnB</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3" size-md="4" offset-md="4">
+          <ion-list>
+            <ion-item *ngIf="!isLogin">
+              <ion-input 
+                 type="username"
+                 ngModel 
+                 name="username" 
+                 required
+                 #emailCtrl="ngModel"
+                 placeholder="Username">
+              </ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input 
+                 type="email"
+                 ngModel 
+                 name="email" 
+                 required
+                 #emailCtrl="ngModel"
+                 placeholder="Email"
+                 pattern="[A-Za-z0-9]{1,}@[a-zA-Z-_.]{1,}[.]{1}[a-zA-Z]{1,}">
+              </ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input 
+                 [type]="showPassword ? 'text' : 'password'" 
+                 ngModel 
+                 name="password"  
+                 required
+                 #passwordCtrl="ngModel"
+                 placeholder="Password"
+                 clearOnEdit="false">
+              </ion-input>
+              <ion-icon slot="end" [name]="passwordIcon" (click)="togglePasswordIcon()"></ion-icon>
+            </ion-item>
+            <ion-item *ngIf="!isLogin">
+              <ion-input 
+                 [type]="showPassword ? 'text' : 'password'"
+                 ngModel 
+                 name="confirmPassword" 
+                 required
+                 #confirmpassCtrl="ngModel"
+                 placeholder="Confirm password"
+                 clearOnEdit="false">
+              </ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3" size-md="4" offset-md="4">
+          <ion-button 
+            type="button" 
+            color="primary" 
+            fill="clear" 
+            expand="block" 
+            (click)="onSwitchAuthMode()"> Switch to {{ isLogin ? 'Sign up' : 'Login' }}
+          </ion-button>
+          <ion-button 
+            type="submit" 
+            color="primary" 
+            expand="block" 
+            [disabled]="authForm.invalid"> {{ isLogin ? 'Login' : 'Sign up' }}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form> 
+</ion-content>

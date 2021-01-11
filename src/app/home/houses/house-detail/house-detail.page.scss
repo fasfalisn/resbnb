@@ -1,0 +1,25 @@
+.details {
+  &__img {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__card {
+    margin-top: -20px;
+    border-radius: 14px;
+
+    &-header{
+        text-align: center;
+    }
+
+    // &-body{
+
+    // }
+  }
+
+  &__book-button {
+    left: 50%;
+    transform: translate(-50%,0%);
+  }
+}

@@ -1,0 +1,75 @@
+.header{
+
+    &__title {
+      text-align: center;
+    }
+  
+}
+
+.content{
+    height: 100%;
+    background-color: #f6f6f6;
+    --ion-grid-width: 800px;
+
+    &__search{
+
+        &-title{
+            font-weight: 200;
+            font-size: 50px;
+        }
+
+        &-subtitle{
+            font-weight: 100;
+            font-size: 25px;
+        }
+
+        &-box{
+            // background-color: white;
+            padding-bottom: 10px;
+            color: #777;
+            border-radius: 50px;
+            position: relative;
+
+            &-list{
+                width: 100%;
+                max-height: 400px;
+                overflow: auto;
+                position: absolute;
+                z-index: 100;
+                top:40px;
+                left: -15px;
+                list-style-type: none;
+                color: #ffffff;
+            }
+        }
+    }
+
+    &__popular{
+            
+            &-img{
+                height: 175px;
+                width: 100%;
+                object-fit: cover;
+            }
+
+            &-card{
+                height: 350px; 
+                margin: 0;
+                margin-right: 50px;
+                width: 100%;
+                box-shadow: none;
+                border-radius: 14px;
+
+                &--title{
+                    font-weight: 600;
+                    color: black;
+                }
+            }
+
+            &-text {
+                font-weight: 700;
+                font-size: 25px;
+                padding-bottom: 10px;
+            }
+    }
+}

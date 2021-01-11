@@ -1,0 +1,7 @@
+{
+  "name": "thehousedine",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

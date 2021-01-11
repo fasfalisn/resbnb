@@ -1,0 +1,17 @@
+.title{
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+ion-card {
+    box-shadow: 0px 5px 10px rgba(0,0,0,.5);
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  .add{
+      
+    left: 50%;
+    transform: translate(-50%,0%);
+  }

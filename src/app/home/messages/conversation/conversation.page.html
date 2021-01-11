@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" color="light">
+      <ion-back-button defaultHref="home/tabs/messages"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="start" color="light">
+      <img src="https://queen.bbend.net/media/com_news/story/2020/03/31/195623/main/akis_petretzikis_89701605_205893477146256_4027279330418043106_n.jpg" class="img-head"/>
+    </ion-buttons>
+    <ion-title color="primary">{{ externalUser.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding class="contentBg" #content id="chat-parent" overflow-scroll="true">
+  <div>
+    <div *ngIf="loading" style="position:fixed; z-index:10; width: 100%; height: 100%; text-align:center; background-color: white;">
+      <ion-spinner style="position: relative; top: 40%;" name="lines" ></ion-spinner>
+    </div>
+    <div id="chat-container">
+      <div class="message-wrap">
+        <div *ngFor="let msg of msgList;let i = index; let first = first; let last = last;" class="message">
+          <div class="message-left" *ngIf="msg.From_UserID == externalUser.id" [style]="((i < msgList.length - 1) && msgList[i].From_UserID != msgList[i+1].From_UserID) ? 'padding-bottom: 7px;' : ''">
+            <div class="msg-detail">
+              <div class="msg-content">
+                <p class="line-breaker ">{{msg.Text}}</p>
+                <small style="color:gray; float: right; margin-top: 2px;">{{ msg.Date | date: 'dd/MM/yyyy, hh:mm a'}}</small>
+              </div>
+            </div>
+          </div>
+          <div class="message-right" *ngIf="msg.From_UserID == internalUser.id" [style]="((i < msgList.length - 1) && msgList[i].From_UserID != msgList[i+1].From_UserID) ? 'padding-bottom: 7px;' : ''">
+            <div class="msg-detail">
+              <div class="msg-content">
+                <p class="line-breaker" style="float: right;">{{ msg.Text }}</p>
+                <br>
+                <small style="color:rgb(192, 192, 192); float: right; margin-top: 2px;">{{ msg.Date | date: 'dd/MM/yyyy, hh:mm a'}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="footer">
+  <ion-toolbar class="footerSections">
+    <div class="containerFooter">
+      <div class="inputConatiner">
+        <ion-input class="placeholdertext inputMessage inputBg" type="text" placeholder="Type a message" [(ngModel)]="inpText"
+          autofocus="true" padding-start></ion-input>
+      </div>
+      <div class="send-button-parent">
+        <ion-button  class="sendBtn" color="primary" (click)="sendMessage()">
+          <ion-icon class="sendBtn-icon" name="send" color="light"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,88 @@
+<!-- <ion-header class="header ion-no-border" >
+  <ion-toolbar color="primary">
+    
+    <ion-title class="header__title">
+      The House Dine
+    </ion-title>
+    
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <ion-grid class="content ion-padding" fixed>
+    <ion-row>
+      <ion-col size="10" offset="1" class="content__search-title">
+        <ion-text color="primary">Explore!</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="10" offset="1" class="content__search-subtitle">
+        <ion-text>Search for Restaurants, Bars and Cafes around you!</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="8" offset="2" class="content__search-box">
+        <!-- <ion-input placeholder="Select City"></ion-input> -->
+          <ion-searchbar
+          placeholder="Select City"
+          animated="true"
+          (ionChange)="ionChange($event)"
+        ></ion-searchbar>
+            <ion-list inset="true" *ngIf="searchedLocations.length > 0" class="content__search-box-list">
+              <ion-item
+                lines="none"
+                *ngFor="let location of searchedLocations"
+                [routerLink]="[
+              '/',
+              'home',
+              'tabs',
+              'houses',
+              'location',
+              location.title]"
+              >
+                {{location.title}}
+              </ion-item>
+            </ion-list>
+        
+        
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="houses.length >= 1">
+      <ion-col offset="1" size="11" class="content__popular">
+        <p class="content__popular-text ion-margin">Houses with offers</p>
+        
+        <div *ngIf="isLoading" class="ion-text-center">
+          <ion-spinner color="primary"></ion-spinner>
+        </div>
+
+        <ion-slides [options]="options" *ngIf="!isLoading">
+          <ion-slide *ngFor="let house of houses"
+          [routerLink]="[
+          '/',
+          'home',
+          'tabs',
+          'houses',
+          'house',
+          house.houseid]">
+            <ion-card class="content__popular-card">
+              <ion-card-content>
+                <img
+                  src="https://images.adsttc.com/media/images/5be9/fd5c/08a5/e5a5/8c00/008f/large_jpg/CARLES_FAUS_ARQUITECTURA_-_CARMEN_HOUSE_(2).jpg?1542061390"
+                  alt=""
+                  class="content__popular-img"
+                />
+              </ion-card-content>
+              <ion-card-header>
+                <ion-card-subtitle>{{house.type}}</ion-card-subtitle>
+                <h2 class="content__popular-card--title">{{house.name}}</h2>
+              </ion-card-header>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

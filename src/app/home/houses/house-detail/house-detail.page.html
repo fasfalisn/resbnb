@@ -1,0 +1,94 @@
+<ion-content class="details">
+  <ion-fab vertical="top" horizontal="start" slot="fixed" class="ion-margin">
+    <ion-button (click)="goBack()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+  </ion-fab>
+
+  <img
+    class="details__img"
+    src="https://images.adsttc.com/media/images/5be9/fd5c/08a5/e5a5/8c00/008f/large_jpg/CARLES_FAUS_ARQUITECTURA_-_CARMEN_HOUSE_(2).jpg?1542061390"
+  />
+
+  <ion-card class="details__card">
+    <ion-card-header class="details__card-header">
+      <ion-card-title> {{house.name}} </ion-card-title>
+      <ion-card-subtitle>{{house.type}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content class="details__card-body">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <h1 style="color: black">Description</h1>
+            <p>{{house.description}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="1">
+            <ion-icon name="location-outline"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <p>{{house.city}} {{house.zip}}, {{house.street}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col> 
+            <h1 style="color: black">Ratings</h1>
+            <ion-text *ngIf="!ratings || ratings.length < 1">This house has no ratings!</ion-text>
+            <ion-item *ngFor="let rating of ratings">
+              <ion-label>
+                <h1>{{rating.rating}}</h1>
+                <p>{{rating.description}}</p>
+              </ion-label>
+              <ion-icon name="star-outline"></ion-icon>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <h1 style="color: black">Items</h1>
+            <ion-text *ngIf="!items || items.length < 1">This house has no items!</ion-text>
+            <ion-item *ngFor="let item of items" >
+            
+              <ion-label>
+                <h1>{{item.name}}</h1>
+                <p>{{item.description}}</p>
+              </ion-label>
+              <ion-note slot="end"><h1>{{item.price}} $</h1></ion-note>
+              
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="!isHost">
+          <ion-col>
+            <ion-button (click)="goToConversation()">
+              Contact Host
+              <ion-icon name="chatbubbles" style="margin-left: 10px;"></ion-icon>
+            </ion-button>
+          </ion-col>
+          
+        </ion-row>
+
+        <ion-row *ngIf="isHost">
+          <ion-col>
+            <ion-button (click)="addItems()">
+               Add Items
+              <!-- <ion-icon name="chatbubbles" style="margin-left: 10px;"></ion-icon> -->
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab vertical="bottom" class="details__book-button"  slot="fixed">
+    <ion-button *ngIf="isHost" (click)="openUpdateModal()" style="text-transform: capitalize;">Update this place!</ion-button>
+    <ion-button *ngIf="!isHost" (click)="openBookingModal()" style="text-transform: capitalize;">Book this place!</ion-button>
+  </ion-fab>
+</ion-content>

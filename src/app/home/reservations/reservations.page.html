@@ -1,0 +1,38 @@
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-text class="reservations-title" color="primary">Reservations</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <div *ngIf="isLoading" class="ion-text-center">
+      <ion-spinner color="primary"></ion-spinner>
+    </div>
+
+    <ion-text *ngIf="!isLoading && reservations.length<1">You don't have any reservations yet.</ion-text>
+      
+    
+    <ion-row *ngFor="let reservation of reservations">
+      <ion-col class="reservations" size="10" offset="1">
+        <div *ngIf="!isLoading">
+        <p class="reservations-text">{{reservation.date | date: 'dd/MM/yyyy, hh:mm a'}}</p>
+        <ion-item class="reservations-item" (click)="openBookingModal(reservation.resid)">
+          <ion-thumbnail slot="start" detail>
+            <ion-img
+              src="https://images.adsttc.com/media/images/5be9/fd5c/08a5/e5a5/8c00/008f/large_jpg/CARLES_FAUS_ARQUITECTURA_-_CARMEN_HOUSE_(2).jpg?1542061390"
+            ></ion-img>
+          </ion-thumbnail>
+          <ion-label>
+            <h2>{{reservation.Name}}</h2>
+            <p>Confirmed</p>
+          </ion-label>
+        </ion-item>
+      </div>
+      </ion-col>
+    </ion-row>
+  
+
+    
+  </ion-grid>
+</ion-content>

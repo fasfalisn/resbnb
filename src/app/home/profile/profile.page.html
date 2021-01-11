@@ -1,0 +1,58 @@
+<ion-content class="settings ion-padding" >
+  <!-- <p class="settings-title">Settings</p> -->
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-text class="settings-title" color="primary">Settings</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="5">
+        <img src="https://queen.bbend.net/media/com_news/story/2020/03/31/195623/main/akis_petretzikis_89701605_205893477146256_4027279330418043106_n.jpg" class="settings-img">
+      </ion-col>
+      <ion-col size="6">
+        <p class="settings-name">{{user.name}}</p>
+        <p>{{email}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <!-- <ion-item>
+            <ion-label>
+              Personal Information
+            </ion-label>
+          </ion-item> -->
+        
+          <ion-item>
+            <ion-label routerLink="/home/tabs/profile/ratings">
+              My Ratings
+            </ion-label>
+          </ion-item>
+        
+          <ion-item>
+            <ion-label  routerLink="/home/tabs/profile/offers">
+              My Offers
+            </ion-label>
+          </ion-item>
+        
+          <ion-item>
+            <ion-label>
+              Help
+            </ion-label>
+          </ion-item>
+
+          <ion-item (click)="onLogOut()">
+            <ion-label color="danger">
+              Log out
+            </ion-label>
+          </ion-item>
+        
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

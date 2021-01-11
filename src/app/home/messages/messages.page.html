@@ -1,0 +1,32 @@
+<ion-content class="chat" >
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-margin-top underline">
+        <ion-text class="chat-title ion-padding" color="primary">Chat</ion-text>
+        <!--<ion-searchbar placeholder="Search" animated=true></ion-searchbar>-->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+    
+  <div *ngIf="loading" style="text-align: center;">
+    <ion-spinner name="lines" ></ion-spinner>
+  </div>
+  
+
+  <ion-list>
+    <ion-item *ngFor="let message of messages" (click)="goToConversation(message.Name, message.From_UserID,message.To_UserID)">
+      <img src="https://queen.bbend.net/media/com_news/story/2020/03/31/195623/main/akis_petretzikis_89701605_205893477146256_4027279330418043106_n.jpg" class="chat-img">
+      <ion-label>
+        <h2>{{ message.Name }}</h2>
+        <p>{{ (message.From_UserID == this.userId ? 'You: ' : '') + message.Text }}</p>
+        <p style="font-size: small;">{{ message.Date | date: 'dd/MM/yyyy, hh:mm a'}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div *ngIf="messages.length == 0 && !loading" style="text-align: center; line-height: 1.6; margin-top: 20px;">
+    <span style="font-weight: bold;">You don't have any messages yet</span>
+    <br>When contacting a host, messages will be displayed here.
+  </div>
+      
+</ion-content>

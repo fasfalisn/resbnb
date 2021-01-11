@@ -1,0 +1,19 @@
+.reservations {
+
+  &-title {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  &-text {
+    font-weight: 700;
+    font-size: 15px;
+    padding-bottom: 6px;
+    color: var(--ion-color-primary);
+  }
+
+  &-item{
+      margin-bottom: 10px;
+  }
+}
